@@ -22,6 +22,13 @@ class RSAGroup:
         N = p * q
         return random.randint(0, N - 1), p * q
 
+    def compose(self, a, b):
+        return a * b % self.N
+
+    def random_l(self):
+        self.l = generate_prime(self.bits)
+        return self.l
+
 
 class RSAProver:
     t = None
