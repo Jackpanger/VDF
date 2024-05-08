@@ -1,6 +1,3 @@
-from PrimeUtils import *
-
-
 class VDF:
     t = None
 

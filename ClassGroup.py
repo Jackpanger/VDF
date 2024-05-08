@@ -1,4 +1,3 @@
-from VDF import VDF
 from math import gcd
 
 
