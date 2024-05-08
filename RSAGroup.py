@@ -30,38 +30,38 @@ class RSAGroup:
         return self.l
 
 
-class RSAProver:
-    t = None
-
-    def __init__(self, x, T, N):
-        self.x = x
-        self.T = T
-        self.N = N
-
-    def vdf_eval(self):
-        if self.t is None:
-            self.t = pow(2, self.T, self.N)
-        return pow(self.x, self.t, self.N)
-
-    def vdf_prove(self, l):
-        return pow(self.x, self.t // l, self.N)
-
-
-class RSAVerifier:
-    t, l = None, None
-
-    def __init__(self, x, T, N):
-        self.x = x
-        self.T = T
-        self.N = N
-
-    def random_l(self, bits):
-        self.l = generate_prime(bits)
-        return self.l
-
-    # VDF验证
-    def vdf_verify(self, pi, y):
-        if self.t is None:
-            self.t = pow(2, self.T, self.N)
-        r = self.t % self.l
-        return pow(pi, self.l, self.N) * pow(self.x, r, self.N) == y
+# class RSAProver:
+#     t = None
+#
+#     def __init__(self, x, T, N):
+#         self.x = x
+#         self.T = T
+#         self.N = N
+#
+#     def vdf_eval(self):
+#         if self.t is None:
+#             self.t = pow(2, self.T, self.N)
+#         return pow(self.x, self.t, self.N)
+#
+#     def vdf_prove(self, l):
+#         return pow(self.x, self.t // l, self.N)
+#
+#
+# class RSAVerifier:
+#     t, l = None, None
+#
+#     def __init__(self, x, T, N):
+#         self.x = x
+#         self.T = T
+#         self.N = N
+#
+#     def random_l(self, bits):
+#         self.l = generate_prime(bits)
+#         return self.l
+#
+#     # VDF验证
+#     def vdf_verify(self, pi, y):
+#         if self.t is None:
+#             self.t = pow(2, self.T, self.N)
+#         r = self.t % self.l
+#         return pow(pi, self.l, self.N) * pow(self.x, r, self.N) == y
